@@ -24,8 +24,13 @@ function RQSuperHeroes() {
       //   refetchInterval: 3000, //refetch data and updates the ui every 5 seconds, only if window has focus
       // refetchIntervalInBackground: true //refetch data and updates the ui every 5 seconds even if th window loses focus
       //   enabled: false, //fetch the data but it just cache it, not passed to data
-      onSuccess: onSuccess,
-      onError: onError,
+      //   onSuccess: onSuccess, //method that will be executed after a succesfull fetching
+      //   onError: onError,  //method that will be executed after an error on fetching
+      select: (data) => {
+          const superHeroesNames = data.data.map((hero) => hero.name);
+          return superHeroesNames;
+
+      }
     }
   );
 
@@ -40,9 +45,14 @@ function RQSuperHeroes() {
     <>
       <h2>RQ Super Heroes Page</h2>
       <button onClick={refetch}>Fetch Heroes</button>
-      {data?.data.map((hero) => {
+      {/* {data?.data.map((hero) => {
         return <div key={hero.name}> {hero.name} </div>;
-      })}
+      })} */}
+      {
+          data?.map((heroname) => {
+              return <div key={heroname}>{heroname}</div>
+          })
+      }
     </>
   );
 }
