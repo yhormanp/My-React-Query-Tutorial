@@ -16,9 +16,9 @@ export const useSuperHeroesData = (onSuccess, onError) => {
     //   enabled: false, //fetch the data but it just cache it, not passed to data
     onSuccess: onSuccess, //method that will be executed after a succesfull fetching
     onError: onError, //method that will be executed after an error on fetching
-    select: (data) => {
-      const superHeroesNames = data.data.map((hero) => hero.name);
-      return superHeroesNames;
-    },
+    // select: (data) => {
+    //   const superHeroesNames = data.data.map((hero) => hero.name);
+    //   return superHeroesNames;
+    // },
   });
 };
